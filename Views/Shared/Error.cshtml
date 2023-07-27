@@ -1,0 +1,24 @@
+﻿@model Microsoft.AspNetCore.Mvc.ProblemDetails
+
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+<h2>Error</h2>
+
+<p>
+    An error occurred while processing your request.
+</p>
+<p>
+    @if (Model != null && !string.IsNullOrEmpty(Model.Title))
+    {
+        <strong>Error Title:</strong> @Model.Title
+    }
+</p>
+<p>
+    @if (Model != null && !string.IsNullOrEmpty(Model.Detail))
+    {
+        <strong>Error Detail:</strong> @Model.Detail
+    }
+</p>

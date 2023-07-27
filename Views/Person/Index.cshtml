@@ -1,0 +1,46 @@
+﻿@model BidOne.Models.Person
+
+<h2>Person Form</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Person Information</title>   
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
+<body>
+    @{
+        var errors = ViewData.ModelState.Values.SelectMany(v => v.Errors);
+    }
+    @if (errors.Any())
+    {
+        <div class="alert alert-danger">
+            <ul>
+                @foreach (var error in errors)
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    }
+    <form method="post">
+        <div class="input-margin">
+            <label>First Name:</label>&nbsp;
+            <input type="text" name="FirstName" value="@Model?.FirstName" />
+        </div>
+        <div class="input-margin">
+            <label>Last Name:</label>&nbsp;
+            <input type="text" name="LastName" value="@Model?.LastName" />
+        </div>
+        <button type="submit">Submit</button>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+    </form>
+</body>
+</html>
+
